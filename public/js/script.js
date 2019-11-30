@@ -13,8 +13,17 @@ function httpGetAsync(theUrl, callback)
     xmlHttp.send(null);
 }
 
-function test() {
+function getReq() {
     httpGetAsync('http://localhost:3000/api/users', (d) => console.log(
-        JSON.parse(d).res[0 ]
+        JSON.parse(d).res
     ));
+}
+
+function postReq() {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/api/users',
+        contentType: 'application/json',
+        data: JSON.stringify( { name: "pablo" } )
+    });
 }
