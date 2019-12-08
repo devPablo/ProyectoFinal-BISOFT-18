@@ -28,7 +28,7 @@ function generateEnvironment() {
         content +=
         `
         <g data-id="${i-1}">
-            <rect class="rect" x="${x}" y="${y}" width="${width}" height="${height}" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.2;" stroke-opacity="0.2"></rect>       
+            <rect class="rect" x="${x}" y="${y}" width="${width}" height="${height}" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.2; stroke-width: 1;"></rect>       
             
         </g>
         `;
@@ -100,7 +100,8 @@ function paintScrabbleBonuses() {
 }
 
 document.oncontextmenu = function(e) {
-    if (e.srcElement.parentNode.parentNode.parentNode.id == 'environment') {
+    let eID = e.srcElement.parentNode.parentNode.parentNode.id;
+    if (eID == 'environment' || eID == 'letterDisplay') {
         e.preventDefault();
     }
 }

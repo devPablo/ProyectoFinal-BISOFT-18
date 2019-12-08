@@ -1,0 +1,42 @@
+#playerDisplay {
+    width: 80%;
+    padding-bottom: 1%;
+    margin: 0 10%;
+    border-radius: 45px 45px 0 0;
+    background-color: #5d6072;
+    position: absolute;
+    bottom: 0;
+}
+
+#pd_container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#letterDisplay {
+    position: relative;
+    display: inline;
+}
+
+.playerButtons {
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    padding: 1% 3%;
+    border: 1.5px solid red;
+    border-radius: 30px;
+    cursor: pointer;
+    color: red;
+    margin: 0 5%;
+    font-size: 16px;
+}
+
+.playerButtons:hover {
+    background-color: red;
+    color: #FFF;
+}
+
+#svgDisplay {
+    position: absolute;
+    transform: translateY(39.5%);
+}

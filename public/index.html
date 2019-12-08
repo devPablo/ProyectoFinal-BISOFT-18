@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/player_screen.css">
     <link rel="stylesheet" href="css/env.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/player_display.css">
     <title>Scrabble</title>
 </head>
 
@@ -19,27 +23,90 @@
     </div>
 
 
+    <!-- Choose Player Screen -->
+    <div id="playerScreen">
+        <div id="ps_container">
+            <div>
+                <p id="loginTitle">Login</p>
+                <p id="loginSubtitle">Provide the username of both players to play Scrabble!</p>
+            </div>
+
+            <div style="padding: 6% 0;">
+
+                    <div style="padding: 2% 0;">
+                        <input type="text" id="p1" class="username" placeholder="Player_one">
+                    </div>
+
+                    <div style="padding: 2% 0;">
+                            <input type="text" id="p2" class="username" placeholder="Player_two">
+                        </div>
+
+            </div>
 
 
 
+            <div style="padding: 5%; text-align: center;">
+                <button type="button" id="btnPlay">Play</button>
+            </div>
+
+        </div>
 
 
-    <!-- Nav -->
 
-    <nav>
-
-    </nav>
-
-
-    <!-- Environment -->
-
-    <div id="environment">
-        <svg id="svg" height="750" version="1.1" width="750" xmlns="http://www.w3.org/2000/svg"
-            style="overflow: hidden; position: relative; padding: 2.5%;">
-            <!-- Generate SVG -->
-        </svg>
     </div>
 
+
+    <!-- Scrabble Game Screen -->
+    <div id="gameScreen">
+
+        <!-- Nav -->
+
+        <nav>
+            <div id="navMiddle">
+
+                <div id="p1" class="playerFrame">
+                    <p>pbonillag</p>
+                    <p>Points: 46</p>
+                </div>
+
+                <div id="p2" class="playerFrame">
+                    <p>lmonge</p>
+                    <p>Points: 34</p>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!-- Environment -->
+
+        <div id="environment">
+            <svg id="svg" height="750" version="1.1" width="750" xmlns="http://www.w3.org/2000/svg"
+                style="overflow: hidden; position: relative; padding: 1.5%;">
+                <!-- Generate SVG -->
+            </svg>
+        </div>
+
+
+
+        <!-- Player Display -->
+        <div id="playerDisplay">
+            <div id="pd_container">
+
+                <div id="letterDisplay">
+                    <button type="button" id="btnExchange" class="playerButtons">Exchange</button>
+                    <svg id="svgDisplay" height="50" version="1.1" width="350" xmlns="http://www.w3.org/2000/svg"
+                        style="overflow: hidden; position: relative;">
+                        <!-- Generate SVG -->
+                    </svg>
+
+                    <button type="button" id="btnShuffle" class="playerButtons">Shuffle</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 
 
@@ -52,6 +119,8 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/environment.js"></script>
+    <script src="js/player_display.js"></script>
+    <script src="js/player_screen.js"></script>
 </body>
 
 </html>

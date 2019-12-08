@@ -1,0 +1,21 @@
+nav {
+    background-color: #FFF;
+    /* height: 7.5%; */
+    box-shadow: 0 5px 10px 0 rgba(0,64,128,.05);
+    text-align: center;
+}
+
+#navMiddle {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.playerFrame {
+    display: inline-block;
+    padding: 0 100px;
+}
+
+.playerFrame:first-child {
+    border-right: 2px dashed #F2F2F2;
+}
