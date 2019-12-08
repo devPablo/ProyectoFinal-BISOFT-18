@@ -14,22 +14,34 @@ gameScreen.style.display = 'none';
 btnPlay.addEventListener('click', playGame);
 
 function playGame() {
-    let p1U = p1.value;
-    let p2U = p2.value;
+    let p1Res = validate(p1);
+    let p2Res = validate(p2);
+    if (p1Res && p2Res) {
+        playerScreen.style.display = 'none';
+        gameScreen.style.display = 'block';
+    }
 
-    playerScreen.style.display = 'none';
-    gameScreen.style.display = 'block';
+
 
 }
 
-function validate() {
-    let val = this.value.replace(/\s/g, '');
+function validate(e) {
+    let val;
+    let ele;
+    if (this.nodeName != 'INPUT') {
+        ele = e;
+    } else {
+        ele = this;
+    }
+    val = ele.value.replace(/\s/g, '');
     if (tmpUsernames.includes(val)) {
         // Username found
-        this.style.borderRight = '5px solid #32DB6E';
+        ele.style.borderRight = '5px solid #32DB6E';
+        return true;
 
     } else {
         // Username error
-        this.style.borderRight = '5px solid #EB3A34';
+        ele.style.borderRight = '5px solid #EB3A34';
+        return false;
     }
 }
