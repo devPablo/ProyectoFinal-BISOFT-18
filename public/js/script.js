@@ -1,5 +1,4 @@
 let getReqButton = document.querySelector('#getReqButton');
-getReqButton.addEventListener('click', test);
 
 function httpGetAsync(theUrl, callback)
 {
