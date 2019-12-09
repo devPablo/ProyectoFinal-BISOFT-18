@@ -52,7 +52,8 @@ function paintScrabbleBonuses() {
             	        
             // Gray (Star) - Game initialization point
             if (eID == 112) {
-                svg.childNodes[i].childNodes[1].setAttribute('fill', 'gray');
+                svg.childNodes[i].childNodes[1].setAttribute('fill', '#0E0C0F');
+                svg.childNodes[i].setAttribute('data-bonus', 'STAR');
             }
 
             // Green (3B) - Triple bonus letter
@@ -70,7 +71,8 @@ function paintScrabbleBonuses() {
                 eID == 186 || eID == 188 || 
                 eID == 196 || eID == 208 ||
                 eID == 214 || eID == 220) {
-                svg.childNodes[i].childNodes[1].setAttribute('fill', 'green');
+                svg.childNodes[i].childNodes[1].setAttribute('fill', '#2BB44A');
+                svg.childNodes[i].setAttribute('data-bonus', '3B');
             }
 
             // Orange (3W) - Triple bonus word
@@ -78,14 +80,16 @@ function paintScrabbleBonuses() {
                 || eID == 30 || eID == 44
                 || eID == 180 || eID == 194
                 || eID == 212 || eID == 222) {
-                svg.childNodes[i].childNodes[1].setAttribute('fill', 'darkorange');
+                svg.childNodes[i].childNodes[1].setAttribute('fill', '#F03D32');
+                svg.childNodes[i].setAttribute('data-bonus', '3W');
             }
 
             // Yellow (2W) - Double bonus word
             if (eID == 20 || eID == 24 || eID == 52 || eID == 76
                 || eID == 88 || eID == 108 || eID == 116 || eID == 136
                 || eID == 148 || eID == 172 || eID == 200 || eID == 204) {
-                svg.childNodes[i].childNodes[1].setAttribute('fill', 'yellow');
+                svg.childNodes[i].childNodes[1].setAttribute('fill', '#F89617');
+                svg.childNodes[i].setAttribute('data-bonus', '2W');
             }
 
             // Blue (2B) - Double bonus letter
@@ -93,78 +97,9 @@ function paintScrabbleBonuses() {
                 || eID == 68 || eID == 94 || eID == 100
                 || eID == 124 || eID == 130 || eID == 156
                 || eID == 158 || eID == 182 || eID == 192) {
-                svg.childNodes[i].childNodes[1].setAttribute('fill', 'blue');
+                svg.childNodes[i].childNodes[1].setAttribute('fill', '#4774B5');
+                svg.childNodes[i].setAttribute('data-bonus', '2B');
             }
         }
-    }
-}
-
-document.oncontextmenu = function(e) {
-    let eID = e.srcElement.parentNode.parentNode.parentNode.id;
-    if (eID == 'environment' || eID == 'letterDisplay') {
-        e.preventDefault();
-    }
-}
-
-let paint = false;
-let erase = false;
-
-document.addEventListener('click', function (event) {
-	if (event.which == 1) {
-        draw(1);
-    }
-
-    if (event.which == 3) {
-        draw(0);
-    }
-});
-
-document.addEventListener('mouseover', function(event) {
-    if (paint) {
-        draw(1);
-    }
-
-    if (erase) {
-        draw(0);
-    }
-});
-
-document.addEventListener('mousedown', function(event) {
-    if (event.which == 3) {
-        if (!erase) {
-            erase = true;
-            draw(0);
-        }
-    }
-    if (event.which == 1) {
-        if (!paint) {
-            paint = true;
-            draw(1);
-        } 
-    }
-    
-});
-
-document.addEventListener('mouseup', function(event) {
-    if (paint) {
-        paint = false;
-    }
-    if (erase) {
-        erase = false;
-    }
-});
-
-function draw(mode) {
-    if (mode == 0) {
-        // Erase
-        if (!event.target.closest('.rect')) return;
-        event.target.setAttribute('fill', '#FFF');
-    }
-
-    if (mode == 1) {
-        // Paint - Wall
-        if (!event.target.closest('.rect')) return;
-        event.target.setAttribute('fill', 'green');
-        console.log(event.target.parentElement.getAttribute('data-id'));
     }
 }
