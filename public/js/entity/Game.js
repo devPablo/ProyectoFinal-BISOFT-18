@@ -44,11 +44,19 @@ class Game {
         for (let i = 0; i < 7; i++) {
             let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
             this.playerList[0].letters.push(letter);
+            let index = this.allLetters.indexOf(letter);
+            this.allLetters.splice(index, 1);
         }
 
         for (let i = 0; i < 7; i++) {
             let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
             this.playerList[1].letters.push(letter);
+            let index = this.allLetters.indexOf(letter);
+            this.allLetters.splice(index, 1);
         }
+    }
+
+    update() {
+        this.turn = (this.turn.username == this.playerList[0].username) ? this.playerList[0] : this.playerList[1];
     }
 }

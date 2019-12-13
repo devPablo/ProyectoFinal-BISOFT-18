@@ -18,9 +18,16 @@ function tmpGame() {
     let p2 = new Player('lmonge');
     players.push(p1, p2);
     game = new Game(players);
+
+
+    sessionStorage.setItem('_game', JSON.stringify(game));
+    tmpGame2();
 }
 
-sessionStorage.setItem('_game', JSON.stringify(game));
+function tmpGame2() {
+    let ssGame = JSON.parse(sessionStorage.getItem('_game'));
+    generatePlayerDisplay(ssGame.turn);
+}
 
 // --------------------
 

@@ -40,3 +40,8 @@
     position: absolute;
     transform: translateY(39.5%);
 }
+
+#svgDisplay image {
+    width: 50px;
+    height: auto;
+}

@@ -1,5 +1,5 @@
-const width = 50;
-const height = 50;
+const width = 35;
+const height = 35;
 const nodesRow = 15;
 const svg = document.querySelector('#svg');
 
@@ -28,7 +28,7 @@ function generateEnvironment() {
         content +=
         `
         <g data-id="${i-1}">
-            <rect class="rect" x="${x}" y="${y}" width="${width}" height="${height}" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.2; stroke-width: 1;"></rect>       
+            <rect class="rect" x="${x}" y="${y}" data-display="false" width="${width}" height="${height}" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.2; stroke-width: 1;"></rect>       
             
         </g>
         `;
