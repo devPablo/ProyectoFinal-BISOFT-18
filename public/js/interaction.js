@@ -75,7 +75,6 @@ function playSound() {
 }
 
 function applyMove(letter, remove) {
-    let player = game.turn;
     if (remove) {
         game.turn.removeLetter(letter);
     } else {

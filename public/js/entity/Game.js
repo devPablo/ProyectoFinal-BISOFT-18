@@ -59,4 +59,10 @@ class Game {
     update() {
         this.turn = (this.turn.username == this.playerList[0].username) ? this.playerList[0] : this.playerList[1];
     }
+
+    nextTurn() {
+        this.turn = (this.turn.username == this.playerList[0].username) ? this.playerList[1] : this.playerList[0];
+        this.update();
+        generatePlayerDisplay(this.turn);
+    }
 }
