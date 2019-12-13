@@ -19,14 +19,21 @@ document.addEventListener('click', function (event) {
 });
 
 function draw() {
+    if (!game) return;
     
     console.log(isFromDisplay);
     console.log(event.target);
 
+    let username = event.target.getAttribute('data-username');
+    let isOldMove = event.target.getAttribute('data-oldmove');
+
     if (event.target.closest('.svgImage')) {
-        isFromDisplay = event.target.getAttribute('data-display') == 'true';
-        letterMarked = event.target;
-        playSound();
+        if (game.validateUserMove(username) && isOldMove == 'false') {
+            isFromDisplay = event.target.getAttribute('data-display') == 'true';
+            letterMarked = event.target;
+            playSound();
+        }
+        
 
     } else if (event.target.closest('.rect') && letterMarked != null) {
         let et = event.target;

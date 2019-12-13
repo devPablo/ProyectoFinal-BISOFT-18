@@ -1,14 +1,19 @@
 const playerScreen = document.querySelector('#playerScreen');
+const registerScreen = document.querySelector('#registerScreen');
 const gameScreen = document.querySelector('#gameScreen');
 const btnPlay = document.querySelector('#btnPlay');
+const closeRegister = document.querySelector('#closeRegisterWrapper');
+const btnbtnRegisterConfirm = document.querySelector('#btnRegisterConfirm');
 const p1 = document.querySelector('#p1');
 const p2 = document.querySelector('#p2');
 let game;
 
 // Temp
 let tmpUsernames = ['pbonillag', 'lmonge'];
+registerScreen.style.display = 'none';
+gameScreen.style.display = 'none';
 
-tmpGame();
+// tmpGame();
 function tmpGame() {
     playerScreen.style.display = 'none';
     gameScreen.style.display = 'block';
@@ -44,6 +49,8 @@ function playGame() {
         playerScreen.style.display = 'none';
         gameScreen.style.display = 'block';
     }
+    // TMP
+    tmpGame();
 }
 
 function validate(e) {
@@ -58,11 +65,59 @@ function validate(e) {
     if (tmpUsernames.includes(val)) {
         // Username found
         ele.style.borderRight = '5px solid #32DB6E';
+        if (ele.parentNode.childNodes.length > 3) {
+            ele.parentNode.removeChild(ele.parentNode.childNodes[3]);
+        }
+
         return true;
 
-    } else {
+    } else if (val != '') { 
         // Username error
+        
         ele.style.borderRight = '5px solid #EB3A34';
+        if (ele.parentNode.childNodes.length > 3) {
+            ele.parentNode.removeChild(ele.parentNode.childNodes[3]);
+        }
+        
+
+        // Create register username elements
+        let chk = document.createElement('i');
+        chk.classList.add('fas', 'fa-check');
+
+        let reg = document.createElement('button');
+        reg.type = 'button';
+        reg.classList.add('btnRegister');
+        reg.appendChild(chk);
+        reg.addEventListener('click', () => openRegister(val));
+        
+        ele.parentNode.appendChild(reg);
+
         return false;
+    } else if (val == '') {
+        ele.style.borderRight = '5px solid #F2F2F2';
+        if (ele.parentNode.childNodes.length > 3) {
+            ele.parentNode.removeChild(ele.parentNode.childNodes[3]);
+        }
     }
+}
+
+
+
+// Register
+closeRegister.addEventListener('click', closeRegisterWrapper);
+
+function closeRegisterWrapper() {
+    registerScreen.style.display = 'none';
+}
+
+
+function openRegister(username) {
+    registerScreen.style.display = 'flex';
+    $('#usernameSubtitle').text(username);
+    btnRegisterConfirm.addEventListener('click', () => register(username));
+}
+
+function register(username) {
+    // Call DB
+    console.log(username);
 }

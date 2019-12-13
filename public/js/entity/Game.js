@@ -65,4 +65,8 @@ class Game {
         this.update();
         generatePlayerDisplay(this.turn);
     }
+
+    validateUserMove(username) {
+        return (this.turn.username == username);
+    }
 }

@@ -16,7 +16,7 @@ function generatePlayerDisplay(player) {
         if (letter == undefined) { 
             img = ''; 
         } else {
-            img = `<image href="./resources/letter_${letter}.png" class="svgImage" data-username='${username}' data-display="true" x="${x}" y="${y}" data-letter="${letters[i]}" width="50" height="50" />`;
+            img = `<image href="./resources/letter_${letter}.png" class="svgImage" data-username='${username}' data-oldmove="false" data-display="true" x="${x}" y="${y}" data-letter="${letters[i]}" width="50" height="50" />`;
         }
 
         content +=

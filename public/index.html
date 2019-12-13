@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/env.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/player_display.css">
+    <link rel="stylesheet" href="css/register.css">
     <title>Scrabble</title>
 </head>
 
@@ -27,19 +28,20 @@
     <div id="playerScreen">
         <div id="ps_container">
             <div>
-                <p id="loginTitle">Login</p>
+                <p id="loginTitle" class="title">Login to Play</p>
                 <p id="loginSubtitle">Provide the username of both players to play Scrabble!</p>
             </div>
 
             <div style="padding: 6% 0;">
 
-                    <div style="padding: 2% 0;">
-                        <input type="text" id="p1" class="username" placeholder="Player_one">
-                    </div>
+                <div style="padding: 2% 0;">
+                    <input type="text" id="p1" class="username" placeholder="Player_one">
 
-                    <div style="padding: 2% 0;">
-                            <input type="text" id="p2" class="username" placeholder="Player_two">
-                        </div>
+                </div>
+
+                <div style="padding: 2% 0;">
+                    <input type="text" id="p2" class="username" placeholder="Player_two">
+                </div>
 
             </div>
 
@@ -55,6 +57,23 @@
 
     </div>
 
+    <!-- Register confirmation -->
+    <div id="registerScreen">
+        <div id="rs_container">
+            <div>
+                <div id="closeRegister">
+                    <div id="closeRegisterWrapper">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    
+                </div>
+                <p id="registerTitle" class="title">New Account</p>
+                <p id="registerSubtitle">Are you sure you want to register the follow username?</p>
+                <p id="usernameSubtitle"></p>
+                <button type="button" id="btnRegisterConfirm">Register</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scrabble Game Screen -->
     <div id="gameScreen">
@@ -99,7 +118,7 @@
                         style="overflow: hidden; position: relative;">
                         <!-- Generate SVG -->
                     </svg>
-                    
+
                     <button type="button" id="btnShuffle" class="playerButtons">Shuffle</button>
                 </div>
 
@@ -117,6 +136,7 @@
 
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/a4e5821cc7.js" crossorigin="anonymous"></script>
     <script src="js/entity/Player.js"></script>
     <script src="js/entity/Game.js"></script>
     <script src="js/script.js"></script>
