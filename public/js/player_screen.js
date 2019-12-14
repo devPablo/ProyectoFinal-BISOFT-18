@@ -86,6 +86,7 @@ function validate(e) {
 
         // Create register username elements
         let chk = document.createElement('i');
+        chk.id = 'loginCheck';
         chk.classList.add('fas', 'fa-check');
 
         let reg = document.createElement('button');

@@ -82,11 +82,11 @@
     background-color: #7289DA;
 }
 
-.btnRegister:hover .fa-check {
+.btnRegister:hover #loginCheck {
     color: #FFF;
 }
 
-.fa-check {
+#loginCheck {
     color: #7289DA;
     font-size: 12px;
     transition: all 0.2s ease;

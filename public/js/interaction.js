@@ -20,9 +20,6 @@ document.addEventListener('click', function (event) {
 
 function draw() {
     if (!game) return;
-    
-    console.log(isFromDisplay);
-    console.log(event.target);
 
     let username = event.target.getAttribute('data-username');
     let isOldMove = event.target.getAttribute('data-oldmove');
