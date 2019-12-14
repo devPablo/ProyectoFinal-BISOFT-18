@@ -58,14 +58,14 @@
     </div>
 
     <!-- Register confirmation -->
-    <div id="registerScreen">
+    <div id="registerScreen" style="display: none;">
         <div id="rs_container">
             <div>
                 <div id="closeRegister">
                     <div id="closeRegisterWrapper">
                         <i class="fas fa-times"></i>
                     </div>
-                    
+
                 </div>
                 <p id="registerTitle" class="title">New Account</p>
                 <p id="registerSubtitle">Are you sure you want to register the follow username?</p>
@@ -76,21 +76,25 @@
     </div>
 
     <!-- Scrabble Game Screen -->
-    <div id="gameScreen">
+    <div id="gameScreen" style="display: none;">
 
         <!-- Nav -->
 
         <nav>
             <div id="navMiddle">
 
-                <div id="p1" class="playerFrame">
-                    <p>pbonillag</p>
-                    <p>Points: 0</p>
+                <div id="p1Frame" class="playerFrame">
+                    <div id="p1FrameCircle" class="frameCircle frameCircleTurn">
+                        <p id="p1FramePoints" class="framePoints">0</p>
+                    </div>
+                    <p id="p1FrameUsername" class="frameText frameTextTurn"></p>
                 </div>
 
-                <div id="p2" class="playerFrame">
-                    <p>lmonge</p>
-                    <p>Points: 0</p>
+                <div id="p2Frame" class="playerFrame">
+                    <div id="p2FrameCircle" class="frameCircle frameCircleNoTurn">
+                        <p id="p2FramePoints" class="framePoints">0</p>
+                    </div>
+                    <p id="p2FrameUsername" class="frameText frameTextNoTurn"></p>
                 </div>
 
             </div>
@@ -144,6 +148,7 @@
     <script src="js/interaction.js"></script>
     <script src="js/player_display.js"></script>
     <script src="js/player_screen.js"></script>
+    <script src="js/point_system.js"></script>
 </body>
 
 </html>

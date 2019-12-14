@@ -10,8 +10,6 @@ let game;
 
 // Temp
 let tmpUsernames = ['pbonillag', 'lmonge'];
-registerScreen.style.display = 'none';
-gameScreen.style.display = 'none';
 
 // tmpGame();
 function tmpGame() {
@@ -49,8 +47,12 @@ function playGame() {
         playerScreen.style.display = 'none';
         gameScreen.style.display = 'block';
     }
+    
+
     // TMP
     tmpGame();
+    
+    setInitialRound();
 }
 
 function validate(e) {
@@ -61,7 +63,9 @@ function validate(e) {
     } else {
         ele = this;
     }
+    
     val = ele.value.replace(/\s/g, '');
+    console.log(val);
     if (tmpUsernames.includes(val)) {
         // Username found
         ele.style.borderRight = '5px solid #32DB6E';
@@ -118,6 +122,11 @@ function openRegister(username) {
 }
 
 function register(username) {
+    closeRegisterWrapper();
+
     // Call DB
-    console.log(username);
+    tmpUsernames.push(username);
+
+    validate(p1);
+    validate(p2);
 }
