@@ -41,19 +41,10 @@ class Game {
 
     assignLettersToPlayers() {
         // Default: 7
-        for (let i = 0; i < 7; i++) {
-            let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
-            this.playerList[0].letters.push(letter);
-            let index = this.allLetters.indexOf(letter);
-            this.allLetters.splice(index, 1);
-        }
+        this.getFromAllLetters(this.playerList[0]);
+        this.getFromAllLetters(this.playerList[1]);
 
-        for (let i = 0; i < 7; i++) {
-            let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
-            this.playerList[1].letters.push(letter);
-            let index = this.allLetters.indexOf(letter);
-            this.allLetters.splice(index, 1);
-        }
+        
     }
 
     update() {
@@ -69,5 +60,24 @@ class Game {
 
     validateUserMove(username) {
         return (this.turn.username == username);
+    }
+
+    exchange(player) {
+        for (let i = 0; i < 7; i++) {
+            this.allLetters.push(player.letters[i]);
+        }
+        player.letters = [];
+        this.getFromAllLetters(player);
+        this.update();
+        generatePlayerDisplay(player);
+    }
+
+    getFromAllLetters(player) {
+        for (let i = 0; i < 7; i++) {
+            let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
+            player.letters.push(letter);
+            let index = this.allLetters.indexOf(letter);
+            this.allLetters.splice(index, 1);
+        }
     }
 }

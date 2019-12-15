@@ -1,6 +1,9 @@
 // svg && svgDisplay
 const btnShuffle = document.querySelector('#btnShuffle');
+const btnExchange = document.querySelector('#btnExchange');
+
 btnShuffle.addEventListener('click', shuffle);
+btnExchange.addEventListener('click', exchange)
 
 let letterMarked = null;
 let isFromDisplay = false;
@@ -93,4 +96,8 @@ function shuffle() {
     game.turn.shuffle();
     game.update();
     generatePlayerDisplay(game.turn);
+}
+
+function exchange() {
+    game.exchange(game.turn);
 }
