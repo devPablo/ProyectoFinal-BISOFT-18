@@ -21,6 +21,7 @@ function tmpGame() {
     let p2 = new Player('lmonge');
     players.push(p1, p2);
     game = new Game(players);
+    generateEnvironment();
 
 
     sessionStorage.setItem('_game', JSON.stringify(game));

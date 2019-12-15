@@ -52,6 +52,7 @@ class Game {
     }
 
     nextTurn() {
+        this.getNewLetters(this.turn);
         this.turn = (this.turn.username == this.playerList[0].username) ? this.playerList[1] : this.playerList[0];
         this.update();
         generatePlayerDisplay(this.turn);
@@ -70,6 +71,7 @@ class Game {
         this.getFromAllLetters(player);
         this.update();
         generatePlayerDisplay(player);
+        this.nextTurn();
     }
 
     getFromAllLetters(player) {
@@ -79,5 +81,22 @@ class Game {
             let index = this.allLetters.indexOf(letter);
             this.allLetters.splice(index, 1);
         }
+    }
+
+    getNewLetters(player) {
+        let amount = player.letters.length;
+        for (let i = 0; i < 7-amount; i++) {
+            let letter = this.allLetters[Math.floor(Math.random()*this.allLetters.length)];
+            player.letters.push(letter);
+            let index = this.allLetters.indexOf(letter);
+            this.allLetters.splice(index, 1);
+        }
+    }
+
+    end() {
+        this.nextTurn();
+        document.querySelector('#gameScreen').style.display = 'none';
+        document.querySelector('#playerScreen').style.display = 'flex';
+        sessionStorage.removeItem('_game');
     }
 }

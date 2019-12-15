@@ -1,5 +1,5 @@
 module.exports = {
-    user: "bd2",
-    password: "bd2",
+    user: "scrabble",
+    password: "password",
     connectString: "localhost/XE"
 };

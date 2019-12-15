@@ -7,8 +7,6 @@ document.querySelector('#clrEnv').addEventListener('click', function() {
     generateEnvironment();
 });
 
-generateEnvironment();
-
 
 function calcPos(num) {
     return num*2+1;
@@ -19,6 +17,7 @@ function calcPos(num) {
 // <text x="${x+18}" y="${y+30}" font-size="18px">A</text>
 
 function generateEnvironment() {
+    svg.innerHTML = '';
     let content;
 
     let x = 0;
