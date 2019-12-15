@@ -3,7 +3,8 @@
     padding-bottom: 1%;
     margin: 0 10%;
     border-radius: 45px 45px 0 0;
-    background-color: #5d6072;
+    background-color: #e4e4e4;
+    border: 1px solid #BEBEBE;
     position: absolute;
     bottom: 0;
 }
@@ -29,6 +30,7 @@
     color: red;
     margin: 0 5%;
     font-size: 16px;
+    transition: all 0.2s ease;
 }
 
 .playerButtons:hover {
@@ -49,15 +51,24 @@
 #btnReady {
     outline: 0;
     border: 0;
-    background-color: rgb(146, 146, 146);
-    padding: 10px;
+    border: 1.5px solid #54C472;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 50%;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 #btnReady:hover {
-    background-color: rgb(116, 116, 116);
+    background-color: #54C472;
 }
 
 #playerCheck {
+    color: #54C472;
+    font-size: 22px;
+    transition: all 0.2s ease;
+}
+
+#btnReady:hover #playerCheck {
     color: #FFF;
 }
