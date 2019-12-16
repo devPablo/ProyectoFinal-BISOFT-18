@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/player_display.css">
     <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
     <title>Scrabble</title>
 </head>
 
@@ -42,11 +43,36 @@
                 <button type="button" id="btnPlay">Play</button>
             </div>
 
+            <div>
+                <button type="button" id="btnLeaderboard"><i class="fas fa-star"></i></button>
+            </div>
+
         </div>
 
 
 
     </div>
+
+
+
+    <!-- Leaderboard -->
+    <div id="leaderboardScreen" style="display: none;">
+        <div id="lbs_container">
+            <div>
+                <div id="closeLeaderboard">
+                    <div id="closeLeaderboardWrapper">
+                        <i class="fas fa-times"></i>
+                    </div>
+
+                </div>
+                <p id="leaderboardTitle" class="title">Leaderboard</p>
+                <p id="leaderboardSubtitle">These are the top 10 players of Scrabble.</p>
+                <p id="usernameSubtitle"></p>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Register confirmation -->
     <div id="registerScreen" style="display: none;">

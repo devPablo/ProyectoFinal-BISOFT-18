@@ -1,8 +1,11 @@
 const playerScreen = document.querySelector('#playerScreen');
 const registerScreen = document.querySelector('#registerScreen');
 const gameScreen = document.querySelector('#gameScreen');
+const leaderboardScreen = document.querySelector('#leaderboardScreen');
 const btnPlay = document.querySelector('#btnPlay');
+const btnLeaderboard = document.querySelector('#btnLeaderboard');
 const closeRegister = document.querySelector('#closeRegisterWrapper');
+const closeLeaderboard = document.querySelector('#closeLeaderboardWrapper');
 const btnRegisterConfirm = document.querySelector('#btnRegisterConfirm');
 const p1 = document.querySelector('#p1');
 const p2 = document.querySelector('#p2');
@@ -44,6 +47,8 @@ p2.addEventListener('keyup', validate);
 
 // gameScreen.style.display = 'none';
 btnPlay.addEventListener('click', playGame);
+
+btnLeaderboard.addEventListener('click', openLeaderboard);
 
 function playGame() {
     let p1Res = validate(p1);
@@ -139,4 +144,18 @@ function register(username) {
         });
         
     });
+}
+
+
+
+
+// Leaderboard
+closeLeaderboard.addEventListener('click', closeLeaderboardWrapper);
+
+function openLeaderboard() {
+    leaderboardScreen.style.display = 'flex';
+}
+
+function closeLeaderboardWrapper() {
+    leaderboardScreen.style.display = 'none';
 }

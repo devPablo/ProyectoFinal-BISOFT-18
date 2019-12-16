@@ -63,7 +63,7 @@ async function run(req, res) {
            SP_REGISTER(:i);
          END;`,
         {
-          i:  req.body.username
+          i:  JSON.stringify({x: 1, y: 2, letra: 'A'})
         },
         { autoCommit: true }
       );
@@ -86,5 +86,47 @@ async function run(req, res) {
       }
     }
   }
+
+router.post('/testdb', (req, res, next) => {
+    testDB(req, res);
+});
+
+  async function testDB(req, res) {
+    let connection;
+
+    try {
+      connection = await oracledb.getConnection(dbConfig);
+      
+      const result = await connection.execute(
+        `BEGIN
+            VALIDAR_PALABRA_PR(:i);
+         END;`,
+        {
+          i:  JSON.stringify({x: 1, y: 2, letra: 'A'})
+        },
+        { autoCommit: true }
+      );
+  
+      console.log(result.outBinds);
+  
+    } catch (err) {
+      console.error(err);
+    } finally {
+      if (connection) {
+        try {
+          await connection.close();
+          res.status(200).json({
+            message: 'Handling GET requests to /users',
+            body: req.body
+        });
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+  }
+
+
+
 
 module.exports = router;
