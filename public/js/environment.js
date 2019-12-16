@@ -3,11 +3,6 @@ const height = 35;
 const nodesRow = 15;
 const svg = document.querySelector('#svg');
 
-document.querySelector('#clrEnv').addEventListener('click', function() {
-    generateEnvironment();
-});
-
-
 function calcPos(num) {
     return num*2+1;
 }

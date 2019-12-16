@@ -3,13 +3,17 @@ const registerScreen = document.querySelector('#registerScreen');
 const gameScreen = document.querySelector('#gameScreen');
 const btnPlay = document.querySelector('#btnPlay');
 const closeRegister = document.querySelector('#closeRegisterWrapper');
-const btnbtnRegisterConfirm = document.querySelector('#btnRegisterConfirm');
+const btnRegisterConfirm = document.querySelector('#btnRegisterConfirm');
 const p1 = document.querySelector('#p1');
 const p2 = document.querySelector('#p2');
+const scrabbleDB = new ScrabbleDB();
 let game;
 
 // Temp
-let tmpUsernames = ['pbonillag', 'lmonge'];
+let usernames = [];
+scrabbleDB.getUsers().done(res => {
+    res.res.forEach(e => usernames.push(e[0]));
+});
 
 // tmpGame();
 function tmpGame() {
@@ -17,9 +21,9 @@ function tmpGame() {
     gameScreen.style.display = 'block';
 
     let players = [];
-    let p1 = new Player('pbonillag');
-    let p2 = new Player('lmonge');
-    players.push(p1, p2);
+    let p1Player = new Player(p1.value.replace(/\s/g, ''));
+    let p2Player = new Player(p2.value.replace(/\s/g, ''));
+    players.push(p1Player, p2Player);
     game = new Game(players);
     generateEnvironment();
 
@@ -66,8 +70,7 @@ function validate(e) {
     }
     
     val = ele.value.replace(/\s/g, '');
-    console.log(val);
-    if (tmpUsernames.includes(val)) {
+    if (usernames.includes(val)) {
         // Username found
         ele.style.borderRight = '5px solid #32DB6E';
         if (ele.parentNode.childNodes.length > 3) {
@@ -127,8 +130,13 @@ function register(username) {
     closeRegisterWrapper();
 
     // Call DB
-    tmpUsernames.push(username);
-
-    validate(p1);
-    validate(p2);
+    scrabbleDB.register({ username: username}).done(() => {
+        scrabbleDB.getUsers().done(res => {
+            usernames = [];
+            res.res.forEach(e => usernames.push(e[0]));
+        validate(p1);
+        validate(p2);
+        });
+        
+    });
 }
