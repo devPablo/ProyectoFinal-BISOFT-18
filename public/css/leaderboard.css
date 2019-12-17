@@ -67,24 +67,34 @@
     letter-spacing: 1.5px;
 }
 
-#btnLeaderboardConfirm {
-    outline: 0;
-    border: 2px solid #7289DA;
-    padding: 12px 80px; 
-    background-color: transparent;
-    color: #7289DA;
-    font-size: 14px;
-    border-radius: 25px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s ease;
-    letter-spacing: 1.25px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-top: 25px;
+#leaderboard table {
+    border-collapse: collapse;
+    margin: 25px;
 }
 
-#btnLeaderboardConfirm:hover {
+#leaderboard th {
     background-color: #7289DA;
     color: #FFF;
+    font-weight: lighter;
+    padding: 15px;
+    text-align: left;
 }
+
+#leaderboard td {
+    padding: 15px;
+    text-align: left;
+    color: #171820;
+}
+
+#leaderboard tr:nth-child(even) {
+    background-color: #F8F6FF;
+}
+
+#leaderboard tr:hover {
+    background-color: rgb(244, 241, 253);
+}
+
+/*
+#7289DA 
+#F8F6FF
+*/
