@@ -1,10 +1,15 @@
 const svgDisplay = document.querySelector('#svgDisplay');
 
-function generatePlayerDisplay(player) {
-    let username = player.username;
-    let letters = player.letters;
+function generatePlayerDisplay(id, username) {
+    let letters = [];
+    scrabbleDB.getPlayerLetters({ id: id, username: username }).done(res => {
+        console.log(res);
+        res.res.forEach(e => letters.push(e[1]));
 
-    $("#svgDisplay").empty();
+
+
+
+        $("#svgDisplay").empty();
     console.log(letters);
     let content;
 
@@ -35,4 +40,5 @@ function generatePlayerDisplay(player) {
     }
     
     svgDisplay.innerHTML = content;
+    });
 }

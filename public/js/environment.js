@@ -15,13 +15,23 @@ function generateEnvironment() {
     svg.innerHTML = '';
     let content;
 
+    let xPos = 0;
+    let yPos = 0;
+
     let x = 0;
     let y = 0;
 
     for (let i = 1; i < 226; i++) {
+        if ((i-1) % 15 == 0 && i != 0) {
+            xPos++;
+            yPos = 0;
+        } else {
+            yPos++;
+        }
+
         content +=
         `
-        <g data-id="${i-1}">
+        <g data-id="${i-1}" x="${xPos-1}" y=${yPos}>
             <rect class="rect" x="${x}" y="${y}" data-display="false" width="${width}" height="${height}" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.2; stroke-width: 1;"></rect>       
             
         </g>

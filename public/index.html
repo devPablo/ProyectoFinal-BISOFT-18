@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="css/player_display.css">
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/leaderboard.css">
+    <link rel="stylesheet" href="css/exchange.css">
     <title>Scrabble</title>
 </head>
 
 <body>
-    
+
     <!-- Choose Player Screen -->
     <div id="playerScreen">
         <div id="ps_container">
@@ -66,8 +67,21 @@
 
                 </div>
                 <p id="leaderboardTitle" class="title">Leaderboard</p>
-                <p id="leaderboardSubtitle">These are the top 10 players of Scrabble.</p>
-                <p id="usernameSubtitle"></p>
+                <p id="leaderboardSubtitle">These are the top players of Scrabble.</p>
+                <div id="leaderboard">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Username</th>
+                                <th>Games Played</th>
+                                <th>Games Won</th>
+                                <th>Games Lost</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -88,6 +102,28 @@
                 <p id="registerSubtitle">Are you sure you want to register the follow username?</p>
                 <p id="usernameSubtitle"></p>
                 <button type="button" id="btnRegisterConfirm">Register</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Exchange letters -->
+    <div id="exchangeScreen" style="display: none;">
+        <div id="es_container">
+            <div>
+                <div id="closeExchange">
+                    <div id="closeExchangeWrapper">
+                        <i class="fas fa-times"></i>
+                    </div>
+
+                </div>
+                <p id="exchangeTitle" class="title">Exchange Letters</p>
+                <p id="exchangeSubtitle">Select any letters you want to exchange.</p>
+                <div id="exchangeLetters">
+                    
+                </div>
+                <button type="button" id="btnExchangeConfirm">Exchange</button>
             </div>
         </div>
     </div>
@@ -134,7 +170,8 @@
             <div id="pd_container">
 
                 <div id="letterDisplay">
-                    <button type="button" id="btnExchange" class="playerButtons"><i class="fas fa-exchange-alt"></i></button>
+                    <button type="button" id="btnExchange" class="playerButtons"><i
+                            class="fas fa-exchange-alt"></i></button>
                     <svg id="svgDisplay" height="50" version="1.1" width="350" xmlns="http://www.w3.org/2000/svg"
                         style="overflow: hidden; position: relative;">
                         <!-- Generate SVG -->
