@@ -28,36 +28,36 @@ function tmpGame() {
 
     // DB
     let idBoard;
-    // scrabbleDB.getBoards().done(res => {
-    //     idBoard = (res.res.length+1)
-    //     scrabbleDB.createGame(
-    //         {
-    //             id: idBoard,
-    //             player_one: p1Username,
-    //             player_two: p2Username
-    //         }
-    //         ).done(() => {
-    //             let players = [];
-    //             let p1Player = new Player(p1.value.replace(/\s/g, ''));
-    //             let p2Player = new Player(p2.value.replace(/\s/g, ''));
-    //             players.push(p1Player, p2Player);
-    //             game = new Game(idBoard, players);
-    //             generateEnvironment();
+    scrabbleDB.getBoards().done(res => {
+        idBoard = (res.res.length+1)
+        scrabbleDB.createGame(
+            {
+                id: idBoard,
+                player_one: p1Username,
+                player_two: p2Username
+            }
+            ).done(() => {
+                let players = [];
+                let p1Player = new Player(p1.value.replace(/\s/g, ''));
+                let p2Player = new Player(p2.value.replace(/\s/g, ''));
+                players.push(p1Player, p2Player);
+                game = new Game(idBoard, players);
+                generateEnvironment();
 
 
-    //             sessionStorage.setItem('_game', JSON.stringify(game));
-    //             tmpGame2();
-    //         });
-    // });
+                sessionStorage.setItem('_game', JSON.stringify(game));
+                tmpGame2();
+            });
+    });
 
-    let players = [];
-    let p1Player = new Player(p1.value.replace(/\s/g, ''));
-    let p2Player = new Player(p2.value.replace(/\s/g, ''));
-    players.push(p1Player, p2Player);
-    game = new Game(1, players);
-    generateEnvironment();
+    // let players = [];
+    // let p1Player = new Player(p1.value.replace(/\s/g, ''));
+    // let p2Player = new Player(p2.value.replace(/\s/g, ''));
+    // players.push(p1Player, p2Player);
+    // game = new Game(1, players);
+    // generateEnvironment();
 
-    tmpGame2();
+    // tmpGame2();
 }
 
 function tmpGame2() {
@@ -67,6 +67,9 @@ function tmpGame2() {
     gameScreen.style.display = 'block';
 
     setInitialRound();
+
+    game.incrementStats(game.playerList[0].username, 1, 0 ,0);
+    game.incrementStats(game.playerList[1].username, 1, 0 ,0);
 }
 
 // --------------------
@@ -82,10 +85,10 @@ btnLeaderboard.addEventListener('click', openLeaderboard);
 function playGame() {
     let p1Res = validate(p1);
     let p2Res = validate(p2);
-    tmpGame();
-    // if (p1Res && p2Res) {
-    //     tmpGame();
-    // }
+    // tmpGame();
+    if (p1Res && p2Res) {
+        tmpGame();
+    }
 
 
 

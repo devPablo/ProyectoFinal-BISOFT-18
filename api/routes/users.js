@@ -30,7 +30,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/leaderboard', (req, res, next) => {
-    const query = 'SELECT * FROM USUARIO ORDER BY PARTIDAS_GANADAS';
+    const query = 'SELECT * FROM USUARIO ORDER BY PARTIDAS_GANADAS DESC';
 
     oracledb.getConnection(
         dbConfig,

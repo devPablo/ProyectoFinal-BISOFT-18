@@ -3,6 +3,7 @@ class Game {
         this.id = id;
         this.playerList = playerList; // Array
         this.turn = playerList[0]; // Default: First Player
+        this.skips = [0, 0];
 
         this.update();
     }
@@ -51,18 +52,59 @@ class Game {
         this.nextTurn();
     }
 
-    validateWord(letters) {
+    validateWord(username, letters) {
         let data = 
         {
             id: this.id,
+            username: username,
             letters: letters
         };
         return scrabbleDB.validateWord(data);
+    }
+
+    givePoints(points) {
+        let data = 
+        {
+            id: this.id,
+            username: this.turn.username,
+            points: points
+        }
+        return scrabbleDB.givePoints(data);
+    }
+
+    getPoints(player) {
+        let data =
+        {
+            id: this.id,
+            player: player
+        }
+        return scrabbleDB.getPoints(data);
+    }
+
+    incrementStats(username, games_played, games_won, games_lost) {
+        let data =
+        {
+            username: username,
+            games_played: games_played,
+            games_won: games_won,
+            games_lost: games_lost
+        }
+        return scrabbleDB.incrementStats(data);
+    }
+
+    validateWinner() {
+        let data =
+        {
+            id: this.id
+        }
+        return scrabbleDB.validateWinner(data);
     }
 
     end() {
         this.nextTurn();
         document.querySelector('#gameScreen').style.display = 'none';
         document.querySelector('#playerScreen').style.display = 'flex';
+
+        this.validateWinner();
     }
 }

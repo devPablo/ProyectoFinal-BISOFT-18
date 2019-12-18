@@ -88,7 +88,6 @@ function applyMove(letter, remove) {
     }
 
     game.update();
-    console.log(game.turn);
 }
 
 function shuffle() {
