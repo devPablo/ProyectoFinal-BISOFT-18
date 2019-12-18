@@ -49,6 +49,11 @@ router.get('/get_letters/:id&:username', (req, res, next) => {
         });
 });
 
+// Validate word
+router.post('/validate_word', (req, res, next) => {
+    validar_palabra_pr(req, res);
+});
+
 // Exchange letters
 router.post('/exchange_letters', (req, res, next) => {
     exchange_pr(req, res);
@@ -130,6 +135,51 @@ async function exchange_pr(req, res) {
         }
     }
 }
+
+
+
+
+async function validar_palabra_pr(req, res) {
+    let connection;
+    let points = 0;
+
+    try {
+        connection = await oracledb.getConnection(dbConfig);
+
+        const result = await connection.execute(
+            `BEGIN
+            TEST_VALIDAR(:id, :letters, :points);
+         END;`,
+            {
+                id: req.body.id,
+                letters: req.body.letters,
+                points: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
+
+            },
+            { autoCommit: true }
+        );
+
+        points = result.outBinds;
+
+    } catch (err) {
+        console.error(err);
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+                res.status(200).json({
+                    message: 'Handling GET requests to /games',
+                    body: points
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+}
+
+
+
 
 
 module.exports = router;

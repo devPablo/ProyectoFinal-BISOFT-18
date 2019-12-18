@@ -42,4 +42,9 @@ class ScrabbleDB {
     exchangeLetters(data) {
         return postMethodToAPI(this.API_URL + 'games/exchange_letters', data);
     }
+
+    // Exchange letters
+    validateWord(data) {
+        return postMethodToAPI(this.API_URL + 'games/validate_word', data);
+    }
 }

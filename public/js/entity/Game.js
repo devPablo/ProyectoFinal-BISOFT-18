@@ -51,6 +51,15 @@ class Game {
         this.nextTurn();
     }
 
+    validateWord(letters) {
+        let data = 
+        {
+            id: this.id,
+            letters: letters
+        };
+        return scrabbleDB.validateWord(data);
+    }
+
     end() {
         this.nextTurn();
         document.querySelector('#gameScreen').style.display = 'none';

@@ -73,14 +73,6 @@ function draw() {
         letterMarked = null;
         playSound();
     }
-
-
-    // Paint - Wall
-    // if (!event.target.closest('.rect')) return;
-    // event.target.setAttribute('fill', 'green');
-    // playSound();
-    // console.log(event.target.parentElement.getAttribute('data-id'));
-
 }
 
 function playSound() {

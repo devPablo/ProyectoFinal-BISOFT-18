@@ -40,9 +40,45 @@ function updateNextRound(player) {
 
 // DB Game Implementation
 function ready(player) {
-    console.log(player);
-
-    if (true) {
-        game.nextTurn();
+    let data = updateEnvironment(false);
+    let letters = '';
+    for (let i = 0; i < data.length; i++) {
+        let s = `${data[i].x},${data[i].y},${data[i].letter}-`;
+        letters += s;
     }
+    letters = letters.substr(0, letters.length-1);
+    let points = 0;
+    game.validateWord(letters).done(res => {
+        points = res.body.points;
+        
+        if (points > 0) {
+            updateEnvironment(true);
+            game.nextTurn();
+        }
+    });
+}
+
+// Update environment
+function updateEnvironment(update) {
+    let data = [];
+    for (let i = 1; i < svg.childNodes.length; i+=2) {
+        let e = svg.childNodes[i].childNodes[3];
+        if (e != undefined) {
+            if (e.getAttribute('data-oldmove') == 'false') {
+                let dataLetter = {};
+
+                dataLetter.x = svg.childNodes[i].getAttribute('x');
+                dataLetter.y = svg.childNodes[i].getAttribute('y');
+                dataLetter.letter = e.getAttribute('data-letter');
+
+                if (update) {
+                    e.setAttribute('data-oldmove', 'true');
+                }
+                
+                data.push(dataLetter);
+            }
+        }
+        
+    }
+    return data;
 }
